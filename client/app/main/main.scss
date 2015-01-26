@@ -1,0 +1,90 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+
+    .input {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+.current-list, .past-list {
+    background-color: #F2F2F2;
+
+    .alert {
+        box-shadow: 0px 2px 2px #e6e6e6;
+        border: 1px solid #e6e6e6;
+        padding: 0px;
+        width: 270px;
+
+        .image {
+            width: 100%;
+        }
+
+        .content {
+            background-color: white;
+            .produce {
+                color: white;
+                text-align: center;
+                height:38px;
+                font-size: 18px;
+                line-height: 38px;
+                text-transform: uppercase;
+            }
+
+            .vegetable {
+                background-color: #7e990c;
+            }
+
+            .fruit {
+                background-color: #034460;
+            }
+
+            .description {
+                padding: 10px 15px;
+                font-size: 100%;
+                height: 100px;
+            }
+            .details {
+                border-top: 1px solid #dedede;
+                border-bottom: 1px solid #dedede;
+                padding: 10px;
+            }
+
+            .dates {
+                background-color: #F2F2F2;
+                color: #ACACAC;
+                padding: 10px;
+
+                .sellby-date {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid #E5E5E5;
+}

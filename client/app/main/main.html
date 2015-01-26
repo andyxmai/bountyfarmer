@@ -1,0 +1,104 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>I want to sell:</h1>
+    <br />
+    <div class="input">
+      <input type="text" ng-model="selected" typeahead="p.name for p in products | filter:$viewValue | limitTo:5" class="form-control input-lg" placeholder="apples, yams, .." typeahead-on-select="onSelect($item, $model, $label)"/>
+    </div>
+  </div>
+</header>
+
+<div class="current-list">
+  <div class="container">
+    <br />
+    <h3>Current Orders</h3>
+    <br />
+    <div class="row">
+      <div class="col-lg-3" ng-repeat="currentItem in currentItems">
+        <div class="alert">
+          <div class="image">
+            <img src="{{ getProductImage(currentItem.product.objectId) }}" class="img-responsive" alt="" />
+          </div>
+          <div class="content">
+            <div class="produce" ng-class=" '{{currentItem.productType}}' == 'vegetable' ? 'vegetable' : 'fruit'">{{ currentItem.productName }}</div>
+            <div class="description">{{currentItem.description}}</div>
+            <div class="details">
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="weight">{{currentItem.weight}} lbs</div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="price">${{currentItem.price/100}}/lb</div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="status">{{currentItem.status}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="dates">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="post-date">{{currentItem.createdAt | date:'MM/dd' : 'UTC'}}</div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="sellby-date">sell by {{currentItem.sellBy.iso | date:'MM/dd' : 'UTC'}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="past-list">
+  <div class="container">
+    <h3>Past Orders</h3>
+    <br />
+    <div class="row">
+      <div class="col-lg-3" ng-repeat="pastItem in pastItems">
+        <div class="alert">
+          <div class="image">
+            <img src="{{getProductImage(pastItem.product.objectId)}}" class="img-responsive" alt="" />
+          </div>
+          <div class="content">
+            <div class="produce" ng-class=" '{{pastItem.productType}}' == 'vegetable' ? 'vegetable' : 'fruit' ">{{pastItem.productName}}</div>
+            <div class="description">{{pastItem.description}}</div>
+            <div class="details">
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="weight">{{pastItem.weight}} lbs</div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="price">${{pastItem.price/100}}/lb</div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="status">{{pastItem.status}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="dates">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="post-date">{{pastItem.createdAt | date:'MM/dd' : 'UTC'}}</div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="sellby-date">sell by {{pastItem.sellBy.iso | date:'MM/dd' : 'UTC'}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>We are happy to chat! <a href="mailto:getbountybox@gmail.com" target="_top">Shoot us an email anytime</a></p>
+  </div>
+</footer>
