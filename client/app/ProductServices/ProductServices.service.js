@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bountyfarmerApp')
-  .factory('ProductServices', function (Restangular, $http) {
+  .factory('ProductServices', function (Restangular) {
     // Service logic
 
     var product = {};

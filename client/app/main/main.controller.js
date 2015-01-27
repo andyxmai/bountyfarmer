@@ -4,7 +4,6 @@ angular.module('bountyfarmerApp')
   .controller('MainCtrl', function ($scope, $modal, Restangular, itemServices, ProductServices, $state) {
 
   itemServices.getCurrentItems().then(function(currentItems) {
-  	console.log(currentItems);
   	$scope.currentItems = currentItems;	
   });
 
@@ -15,7 +14,6 @@ angular.module('bountyfarmerApp')
 	$scope.selected = undefined;
 	
 	Restangular.all('classes/Product').getList().then(function(products) {
-		console.log(products)
 		$scope.products = products;
 	});
 
@@ -27,7 +25,6 @@ angular.module('bountyfarmerApp')
 	$scope.minDate = new Date();
 
 	 $scope.open = function($event) {
-	 	console.log('opened');
     $event.preventDefault();
     $event.stopPropagation();
 
@@ -42,18 +39,15 @@ angular.module('bountyfarmerApp')
   $scope.getProductImage = function(id) {
   	var imageUrl = null;
   	 _.forEach($scope.products, function(product) {
-  	 		if (product.objectId == id) {
+  	 		if (product.objectId === id) {
    	    	imageUrl = product.imageUrl; // My goal
    	   }
    	 });
 
   	return imageUrl.url;
+  };
 
-  	return ProductServices.getProductImage(id);
-  }
-  // $scope.getProductImage('oZcNGW6dhW');
-
- 	$scope.onSelect = function(item, model, label) {
+ 	$scope.onSelect = function(item) {
  		var modalInstance = $modal.open({
       templateUrl: 'components/templates/postModalTemplate.html',
       controller: 'ModalInstanceCtrl',
@@ -77,8 +71,6 @@ angular.module('bountyfarmerApp')
 angular.module('bountyfarmerApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, item, itemServices) {
 
 	$scope.ok = function (form, sellBy) {
-		console.log(item);
-		console.log(sellBy);
 
 		var product = {
       '__type': 'Pointer',
@@ -95,8 +87,8 @@ angular.module('bountyfarmerApp').controller('ModalInstanceCtrl', function ($sco
 		newItem.description = form.description;
 		newItem.status = 'pending';
 		newItem.sellBy = {
-											  "__type": "Date",
-											  "iso": sellBy.toISOString()
+											  '__type': 'Date',
+											  'iso': sellBy.toISOString()
 											};
 
 		itemServices.addItem(newItem).then(function(res) {
@@ -110,7 +102,6 @@ angular.module('bountyfarmerApp').controller('ModalInstanceCtrl', function ($sco
 	};
 
 	$scope.cancel = function () {
-		console.log(item);
 	  $modalInstance.dismiss('cancel');
 	};
 });

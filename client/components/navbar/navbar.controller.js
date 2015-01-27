@@ -3,7 +3,7 @@
 angular.module('bountyfarmerApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
-      'title': "Andy's Farm",
+      'title': 'Andy\'s Farm',
       'link': '/'
     }];
 

@@ -10,7 +10,7 @@ angular.module('bountyfarmerApp')
     item.getCurrentItems = function() {
       var today = new Date();
       return Restangular.all('classes/ListItem').getList({
-        'where': {'sellBy':{"$gte":{"__type": "Date", "iso": today.toISOString()}}},
+        'where': {'sellBy':{'$gte':{'__type': 'Date', 'iso': today.toISOString()}}},
         'order':'-createdAt'
       });
     };
@@ -18,7 +18,7 @@ angular.module('bountyfarmerApp')
     item.getPastItems = function() {
       var today = new Date();
       return Restangular.all('classes/ListItem').getList({
-        'where': {'sellBy':{"$lt":{"__type": "Date", "iso": today.toISOString()}}},
+        'where': {'sellBy':{'$lt':{'__type': 'Date', 'iso': today.toISOString()}}},
         'order':'-createdAt'
       });
     };
@@ -27,7 +27,7 @@ angular.module('bountyfarmerApp')
       var itemList = Restangular.all('classes/ListItem');
 
       return itemList.post(newItem);
-    }
+    };
 
     return item;
   });
